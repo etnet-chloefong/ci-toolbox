@@ -1,14 +1,21 @@
 import * as core from '@actions/core';
-import * as github from '@actions/github';
+
+import {commentPR, sayHello, setStatus} from './jobs';
 
 async function run() {
   try {
-    const myInput = core.getInput('myInput');
-    core.debug(`Hello ${myInput} from inside a container`);
-
-    // Get github context data
-    const context = github.context;
-    console.log(`We can even get context data, like the repo: ${context.repo.repo}`)
+    switch (core.getInput('job')) {
+      case 'comment-pr':
+        commentPR();
+        break;
+      case 'set-status':
+        setStatus();
+        break;
+      case 'hello':
+      default:
+        sayHello();
+        break;
+    }
   } catch (error) {
     core.setFailed(error.message);
   }
