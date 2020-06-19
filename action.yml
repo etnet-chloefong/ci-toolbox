@@ -1,6 +1,6 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
+name: 'CI Toolbox'
+description: 'CI Toolbox'
+author: 'Github'
 inputs: 
   myInput:
     description: 'Input to use'
